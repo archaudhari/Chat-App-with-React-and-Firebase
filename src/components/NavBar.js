@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import GoogleSignin from '../img/btn_google_signin_dark_pressed_web.png';
+import GoogleSignin from '../img/GoogleSignUpDark.png';
+import { auth } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
 
 const NavBar = () => {
-  const [user, setUser] = useState(false);
+  const [user] = useAuthState(auth);
   const googleSignIn = () => {
-    setUser(true);
+    const provider = new GoogleAuthProvider();
+    signInWithRedirect(auth, provider);
   };
   const signOut = () => {
-    setUser(false);
+    auth.signOut();
   };
   return (
     <nav className="nav-bar">
