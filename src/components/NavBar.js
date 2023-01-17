@@ -24,7 +24,7 @@ const NavBar = () => {
         <button className="sign-in">
           <img
             onClick={googleSignIn}
-            src={GoogleSignin}
+            src={GoogleSignUpDark}
             alt="sign in with google"
             type="button"
           />
